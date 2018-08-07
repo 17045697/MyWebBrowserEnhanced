@@ -6,11 +6,14 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnLoadURL;
     WebView wvMyPage;
+    EditText etURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnLoadURL = findViewById(R.id.buttonLoad);
         wvMyPage = findViewById(R.id.webViewMyPage);
+        etURL =findViewById(R.id.editTextURL);
+
         wvMyPage.setWebViewClient(new WebViewClient());
         wvMyPage.getSettings().setJavaScriptEnabled(true);
         wvMyPage.getSettings().setAllowFileAccess(false);
@@ -28,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         btnLoadURL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "http://www.google.com.sg";
+
+                String url = etURL.getText().toString();
                 wvMyPage.loadUrl(url);
             }
         });
